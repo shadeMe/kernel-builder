@@ -54,6 +54,9 @@ pub struct General {
     pub cuda_minver: Option<Version>,
 
     pub hub: Option<Hub>,
+
+    pub torch_minver: Option<Version>,
+    pub torch_maxver: Option<Version>,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
@@ -113,6 +116,7 @@ pub enum Kernel {
         depends: Vec<Dependencies>,
         include: Option<Vec<String>>,
         src: Vec<String>,
+        torch_minver: Option<Version>,
     },
     #[serde(rename_all = "kebab-case")]
     Metal {
@@ -275,6 +279,8 @@ impl General {
             cuda_maxver: None,
             cuda_minver: None,
             hub: None,
+            torch_minver: None,
+            torch_maxver: None,
         }
     }
 }
